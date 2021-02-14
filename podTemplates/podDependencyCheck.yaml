@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    citype: jenkins-declarative-pipeline
+spec:
+  containers:
+  - name: depcheck
+    image: owasp/dependency-check:5.3.2
+    command:
+    - cat
+    tty: true
+    securityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+# Uncomment if behind proxy server
+#    env:
+#      - name: http_proxy
+#        value: "http://myproxy.domain:8080"
+#      - name: https_proxy
+#        value: "http://myproxy.domain:8080"
+#      - name: no_proxy
+#        value: "*.internal.domain,localhost,127.0.0.1,192.168.0.1,192.168.0.2"
+    resources:
+      requests:
+        cpu: 4
+      limits:
+        cpu: 4

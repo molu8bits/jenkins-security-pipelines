@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    citype: jenkins-declarative-pipeline
+spec:
+  containers:
+  - name: base-buildserver
+    image: maven:alpine
+    command:
+    - cat
+    tty: true
